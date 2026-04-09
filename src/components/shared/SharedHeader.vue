@@ -11,13 +11,13 @@ const locales: Locale[] = ['en', 'fr', 'es']
 </script>
 
 <template>
-    <header>
-        <MainLogo/>
-        <nav>
+    <header class="flex fixed z-10 items-center justify-between w-full px-4 md:px-8 py-4">
+        <MainLogo class="h-16 w-auto" />
+        <nav class="flex gap-2">
             <button
                 v-for="lang in locales"
                 :key="lang"
-                :class="{ active: locale === lang }"
+                :class="['px-2 py-1 cursor-pointer text-yellow-400 transition-opacity', locale === lang ? 'opacity-100' : 'opacity-50']"
                 @click="content.load(lang)"
             >
                 {{ lang.toUpperCase() }}
@@ -25,37 +25,3 @@ const locales: Locale[] = ['en', 'fr', 'es']
         </nav>
     </header>
 </template>
-
-<style scoped>
-header {
-    position: fixed;
-    z-index: 1000;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 2em;
-    svg {
-        height: 4em;
-        width: auto;
-    }
-}
-
-nav {
-    display: flex;
-    gap: 0.5rem;
-}
-
-button {
-    padding: 0.25rem 0.5rem;
-    opacity: 0.5;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-button.active {
-    opacity: 1;
-}
-</style>

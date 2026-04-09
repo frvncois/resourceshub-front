@@ -1,23 +1,27 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import { fetchAudiences, fetchCategories } from '@/api/strapi'
-import type { Audience, Category } from '@/api/types'
+import { onMounted, ref, watch } from 'vue'
+import { fetchAudiences } from '@/api/strapi'
+import type { Audience } from '@/api/types'
 import { useHubStore } from '@/stores/hub'
+import { storeToRefs } from 'pinia'
 
 const store = useHubStore()
+const { availableCategories } = storeToRefs(store)
 const audiences = ref<Audience[]>([])
-const categories = ref<Category[]>([])
 
 onMounted(async () => {
-  const [aud, cat] = await Promise.all([fetchAudiences(), fetchCategories('en')])
+  const aud = await fetchAudiences()
   audiences.value = aud.data
-  categories.value = cat.data
+})
+
+watch(() => store.selectedAudience, () => {
+  store.selectedCategory = null
 })
 </script>
 
 <template>
   <section>
-    <div class="bg-yellow-300 flex items-center justify-center gap-4 p-8 mb-24 w-6xl m-auto">
+    <div class="bg-yellow-300 flex flex-col md:flex-row items-center justify-center gap-4 p-6 md:p-8 mb-24 w-full max-w-6xl m-auto -mt-14 rounded-md">
       <div class="flex items-center gap-2">
         <label class="text-sm font-medium whitespace-nowrap">I am</label>
         <select
@@ -35,7 +39,7 @@ onMounted(async () => {
           class="h-10 w-64 rounded-md border border-black/20 bg-white px-3 py-2 text-sm shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 cursor-pointer"
         >
           <option :value="null">— all —</option>
-          <option v-for="c in categories" :key="c.id" :value="c.slug">{{ c.name }}</option>
+          <option v-for="c in availableCategories" :key="c.id" :value="c.slug">{{ c.name }}</option>
         </select>
       </div>
       <button

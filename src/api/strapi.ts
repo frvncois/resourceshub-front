@@ -55,5 +55,6 @@ export function fetchResourcesHub(locale: Locale = 'en') {
 }
 
 export function mediaUrl(path: string): string {
+  if (path.startsWith('http://') || path.startsWith('https://')) return path
   return `${BASE_URL}${path}`
 }

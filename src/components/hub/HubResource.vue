@@ -5,7 +5,7 @@ defineProps<{ resource: Resource }>()
 </script>
 
 <template>
-    <div class="flex flex-col bg-gray-100 rounded-md overflow-hidden">
+    <div class="flex flex-col bg-neutral-100 rounded-md overflow-hidden">
         <div class="relative aspect-square bg-black">
             <img v-if="resource.cover" :src="mediaUrl(resource.cover.url)" :alt="resource.cover.alternativeText ?? resource.name" class="w-full h-full object-cover" />
             <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/60 to-transparent" />

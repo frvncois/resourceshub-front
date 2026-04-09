@@ -8,17 +8,22 @@ import type { Resource, Partner } from '@/api/types'
 import { useHubStore } from '@/stores/hub'
 import { useContentStore } from '@/stores/content'
 
+const PAGE_SIZE = 9
+
 const props = defineProps<{ type: 'resource' | 'partner' }>()
 
 const store = useHubStore()
 const { locale } = storeToRefs(useContentStore())
 const resources = ref<Resource[]>([])
 const partners = ref<Partner[]>([])
+const visibleCount = ref(PAGE_SIZE)
 
 async function load() {
+  visibleCount.value = PAGE_SIZE
   if (props.type === 'resource') {
     const res = await fetchResources(locale.value)
     resources.value = res.data
+    store.setResources(res.data)
   } else {
     const res = await fetchPartners(locale.value)
     partners.value = res.data
@@ -26,6 +31,9 @@ async function load() {
 }
 
 watch(locale, load, { immediate: true })
+watch(() => [store.selectedAudience, store.selectedCategory], () => {
+  visibleCount.value = PAGE_SIZE
+})
 
 const filteredResources = computed(() => {
   return resources.value.filter((r) => {
@@ -36,15 +44,31 @@ const filteredResources = computed(() => {
     return true
   })
 })
+
+const visibleResources = computed(() => filteredResources.value.slice(0, visibleCount.value))
+const visiblePartners = computed(() => partners.value.slice(0, visibleCount.value))
+
+const hasMoreResources = computed(() => visibleCount.value < filteredResources.value.length)
+const hasMorePartners = computed(() => visibleCount.value < partners.value.length)
+
+function loadMore() {
+  visibleCount.value += PAGE_SIZE
+}
 </script>
 
 <template>
-  <section>
-    <div v-if="type === 'resource'" class="max-w-6xl grid grid-cols-3 gap-8 m-auto">
-      <HubResource v-for="resource in filteredResources" :key="resource.id" :resource="resource" />
+  <section class="mb-36">
+    <div v-if="type === 'resource'" class="max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 m-auto px-6 lg:px-0">
+      <HubResource v-for="resource in visibleResources" :key="resource.id" :resource="resource" />
     </div>
-    <div v-else class="grid grid-cols-2 gap-8">
-      <HubPartner v-for="partner in partners" :key="partner.id" :partner="partner" />
+    <div v-else class="max-w-6xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 m-auto mt-16 md:mt-32 px-6 lg:px-0">
+      <div class="col-span-3 font-heading text-6xl mb-16 uppercase">Our Partners</div>
+      <HubPartner v-for="partner in visiblePartners" :key="partner.id" :partner="partner" />
+    </div>
+    <div v-if="type === 'resource' ? hasMoreResources : hasMorePartners" class="flex justify-center mt-10">
+      <button @click="loadMore" class="py-6 px-12 text-center uppercase font-heading text-xl rounded-md border">
+        Load more
+      </button>
     </div>
   </section>
 </template>
