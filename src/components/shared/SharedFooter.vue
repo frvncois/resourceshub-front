@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import { useT } from '@/locales'
+const t = useT()
+</script>
+
 <template>
   <footer class="bg-[#1c1c1c] text-white">
 
@@ -6,33 +11,33 @@
 
       <!-- Resources -->
       <div>
-        <h4 class="font-heading text-sm uppercase tracking-widest mb-6 text-center">Resources</h4>
+        <h4 class="font-heading text-sm uppercase tracking-widest mb-6 text-center">{{ t.footer.resources }}</h4>
         <div class="flex gap-8">
         <ul class="space-y-3 font-body text-sm text-white/70 flex-1">
-          <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
-          <li><a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Contact Us</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">{{ t.footer.aboutUs }}</a></li>
+          <li><a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">{{ t.footer.contactUs }}</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">{{ t.footer.faq }}</a></li>
         </ul>
         <ul class="space-y-3 font-body text-sm text-white/70 flex-1">
-          <li><a href="#" class="hover:text-white transition-colors">Career</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Become a Partner</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Become a Supplier</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">{{ t.footer.career }}</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">{{ t.footer.becomePartner }}</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">{{ t.footer.becomeSupplier }}</a></li>
         </ul>
         </div>
       </div>
 
       <!-- Newsletter -->
       <div class="flex flex-col items-center text-center">
-        <h4 class="font-heading text-sm uppercase tracking-widest mb-6">Subscribe</h4>
-        <p class="font-body text-sm text-white/70 mb-6">Subscribe to our financial newsletter.</p>
+        <h4 class="font-heading text-sm uppercase tracking-widest mb-6">{{ t.footer.subscribe }}</h4>
+        <p class="font-body text-sm text-white/70 mb-6">{{ t.footer.subscribeText }}</p>
         <a href="https://ir.brp.com/email-alerts" target="_self" class="font-body text-sm uppercase tracking-widest border bg-white text-black rounded-md px-6 py-2 hover:bg-white hover:text-black transition-colors">
-          Subscribe
+          {{ t.footer.subscribe }}
         </a>
       </div>
 
       <!-- Social -->
       <div>
-        <h4 class="font-heading text-sm uppercase tracking-widest mb-6 text-center">Follow Us</h4>
+        <h4 class="font-heading text-sm uppercase tracking-widest mb-6 text-center">{{ t.footer.followUs }}</h4>
         <ul class="flex gap-4 justify-between">
           <!-- Instagram -->
           <li>
@@ -97,14 +102,14 @@
     <!-- Legal bar -->
     <div class="border-t border-white/10">
       <div class="max-w-6xl mx-auto px-6 md:px-8 py-6 flex flex-col md:flex-row flex-wrap items-center justify-between gap-4 font-body text-xs text-white/50">
-        <p>© BRP 2003-2026</p>
+        <p>{{ t.footer.copyright }}</p>
         <ul class="flex flex-wrap gap-6">
-          <li><a href="#" class="hover:text-white transition-colors">Legal Notice</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Cookie Policy</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Accessibility</a></li>
-          <li><a href="#" class="hover:text-white transition-colors">Site Map</a></li>
-          <li><a href="javascript:openAxeptioCookies()" class="hover:text-white transition-colors">Do Not Sell My Personal Information</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">{{ t.footer.legal }}</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">{{ t.footer.privacy }}</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">{{ t.footer.cookie }}</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">{{ t.footer.accessibility }}</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">{{ t.footer.siteMap }}</a></li>
+          <li><a href="javascript:openAxeptioCookies()" class="hover:text-white transition-colors">{{ t.footer.doNotSell }}</a></li>
         </ul>
       </div>
     </div>

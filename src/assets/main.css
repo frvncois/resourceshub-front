@@ -16,4 +16,5 @@ body {
 
 @theme {
   --font-heading: 'Heading', sans-serif;
+  --color-yellow: #FED208;
 }

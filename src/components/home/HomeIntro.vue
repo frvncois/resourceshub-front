@@ -4,11 +4,13 @@ import { storeToRefs } from 'pinia'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useContentStore } from '@/stores/content'
+import { useT } from '@/locales'
 import type { StrapiBlock } from '@/api/types'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const { hub } = storeToRefs(useContentStore())
+const { hub, locale } = storeToRefs(useContentStore())
+const t = useT()
 
 function text(block: StrapiBlock) {
   return block.children.map((c) => c.text).join('')
@@ -68,7 +70,7 @@ const stopWatch = watch(hub, async (val) => {
       :is="`h${heading?.level ?? 2}`"
       ref="headingRef"
       v-if="heading"
-      class="font-heading text-4xl md:text-6xl uppercase leading-10 md:leading-12 text-yellow-400 w-[16ch] text-center mb-8"
+      class="font-heading text-4xl md:text-6xl uppercase leading-10 md:leading-12 text-yellow w-[16ch] text-center mb-8"
     >
       {{ text(heading) }}
     </component>
@@ -82,8 +84,8 @@ const stopWatch = watch(hub, async (val) => {
 
     <!-- CTA -->
     <div ref="ctaRef" class="flex justify-center">
-      <RouterLink to="/hub" class="bg-white py-6 px-12 text-center uppercase font-heading text-xl rounded-md border">
-        Click here to visit the Resource Hub
+      <RouterLink :to="`/${locale}/hub`" class="bg-white py-6 px-12 text-center uppercase font-heading text-xl rounded-md border">
+        {{ t.home.visitHub }}
       </RouterLink>
     </div>
 

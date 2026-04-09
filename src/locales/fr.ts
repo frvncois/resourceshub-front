@@ -1,0 +1,40 @@
+export default {
+  hub: {
+    ourPartners: 'Nos Partenaires',
+    loadMore: 'Charger plus',
+    viewResource: 'Voir la ressource',
+    learnMore: 'En savoir plus',
+  },
+  filter: {
+    iAm: 'Je suis',
+    lookingFor: 'à la recherche de',
+    all: '— tous —',
+    reset: 'Réinitialiser',
+  },
+  home: {
+    visitHub: 'Cliquez ici pour visiter le Hub de ressources',
+    letsPlay: 'Jouons',
+  },
+  shared: {
+    letsLearn: 'Apprenons',
+  },
+  footer: {
+    resources: 'Ressources',
+    aboutUs: 'À propos',
+    contactUs: 'Contactez-nous',
+    faq: 'FAQ',
+    career: 'Carrière',
+    becomePartner: 'Devenir partenaire',
+    becomeSupplier: 'Devenir fournisseur',
+    subscribe: "S'abonner",
+    subscribeText: 'Abonnez-vous à notre newsletter financière.',
+    followUs: 'Suivez-nous',
+    copyright: '© BRP 2003-2026',
+    legal: 'Mentions légales',
+    privacy: 'Politique de confidentialité',
+    cookie: 'Politique des cookies',
+    accessibility: 'Accessibilité',
+    siteMap: 'Plan du site',
+    doNotSell: 'Ne pas vendre mes informations personnelles',
+  },
+}

@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import type { Resource } from '@/api/types'
 import { mediaUrl } from '@/api/strapi'
+import { useT } from '@/locales'
 defineProps<{ resource: Resource }>()
+const t = useT()
 </script>
 
 <template>
@@ -15,7 +17,7 @@ defineProps<{ resource: Resource }>()
                 <h3 class="font-heading uppercase text-2xl leading-none max-w-[20ch]">{{ resource.name }}</h3>
                 <p class="text-sm text-gray-500">{{ resource.partner?.name }}</p>
             </div>
-            <a :href="resource.url" class="border py-4 px-8 inline rounded-md text-center">View resource</a>
+            <a :href="resource.url" class="border py-4 px-8 inline rounded-md text-center">{{ t.hub.viewResource }}</a>
         </div>
     </div>
 </template>

@@ -1,0 +1,40 @@
+export default {
+  hub: {
+    ourPartners: 'Our Partners',
+    loadMore: 'Load more',
+    viewResource: 'View resource',
+    learnMore: 'Learn more',
+  },
+  filter: {
+    iAm: 'I am',
+    lookingFor: 'looking for',
+    all: '— all —',
+    reset: 'Reset',
+  },
+  home: {
+    visitHub: 'Click here to visit the Resource Hub',
+    letsPlay: "Let's play",
+  },
+  shared: {
+    letsLearn: "Let's learn",
+  },
+  footer: {
+    resources: 'Resources',
+    aboutUs: 'About Us',
+    contactUs: 'Contact Us',
+    faq: 'FAQ',
+    career: 'Career',
+    becomePartner: 'Become a Partner',
+    becomeSupplier: 'Become a Supplier',
+    subscribe: 'Subscribe',
+    subscribeText: 'Subscribe to our financial newsletter.',
+    followUs: 'Follow Us',
+    copyright: '© BRP 2003-2026',
+    legal: 'Legal Notice',
+    privacy: 'Privacy Policy',
+    cookie: 'Cookie Policy',
+    accessibility: 'Accessibility',
+    siteMap: 'Site Map',
+    doNotSell: 'Do Not Sell My Personal Information',
+  },
+}

@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import type { Partner } from '@/api/types'
 import { mediaUrl } from '@/api/strapi'
+import { useT } from '@/locales'
 defineProps<{ partner: Partner }>()
+const t = useT()
 </script>
 
 <template>
@@ -15,7 +17,7 @@ defineProps<{ partner: Partner }>()
                 <p class="text-sm text-gray-500">{{ partner.country?.name }}</p>
                 <p class="text-sm text-gray-500">{{ partner.description }}</p>
             </div>
-            <a :href="partner.url" target="_blank" class="border py-4 px-8 inline rounded-md text-center">Learn more</a>
+            <a :href="partner.url" target="_blank" class="border py-4 px-8 inline rounded-md text-center">{{ t.hub.learnMore }}</a>
         </div>
     </div>
 </template>
